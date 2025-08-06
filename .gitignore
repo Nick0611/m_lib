@@ -1,0 +1,11 @@
+.vs
+Debug
+Release
+bin
+lib
+*.user
+/ParallelControl/eigen
+/ParallelControl/include/MKL
+.idea
+__pycache__
+

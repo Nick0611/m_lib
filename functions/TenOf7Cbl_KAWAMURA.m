@@ -1,0 +1,63 @@
+%%% function tao = TenOf7Cbl_KAWAMURA(J,f)
+% author: Zachary Leung
+% Date: 2023-3-23
+% reference：[1]	KAWAMURA S, ITO K. A new type of master robot for teleoperation using a radial wire drive system; proceedings of the Proceedings of 1993 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS '93), F 26-30 July 1993, 1993 [C].
+% input1: 结构矩阵
+% input2: 外力螺旋
+% input3: 绳索允许的最小张力
+% output: 各绳索的拉力大小
+function tao = TenOf7Cbl_KAWAMURA(W,fr,t_min)
+b = t_min;
+
+jr = 0;
+
+for j = 1:7
+    Wj = W;
+    Wj(:,j) = [];
+    alpha_j = pinv(Wj)*fr;
+    if all(alpha_j(:)>=0)
+        jr = j;
+        break;
+    end
+end
+
+if jr==0
+    tao = NaN;
+else
+    
+expression = strcat('alpha_b = -b*pinv(Wj)*W(:,',num2str(jr),')',';');
+eval(expression);
+alpha_j = [alpha_j(1:jr-1);0;alpha_j(jr:end)];
+alpha_b = [alpha_b(1:jr-1);0;alpha_b(jr:end)];
+flag = 1;
+for l = 1:7
+    if l == jr
+        alpha_l(l,1) = b;
+    else
+        alpha_l(l,1) = alpha_j(l)+alpha_b(l);
+    end
+end
+while(1)
+    K = find(alpha_l<b);
+    if isempty(K)
+        break;
+    else
+        ir = K(1);
+        Wi = W;
+        Wi(:,ir) = [];
+        expression = strcat('alpha_i = -(b-alpha_l(ir))*pinv(Wi)*W(:,',num2str(ir),')',';');
+        eval(expression);
+        hi = [zeros(1,ir-1),1,zeros(1,7-ir)]';
+        Si = [eye(ir-1),zeros(ir-1,6-ir+1);zeros(1,6);zeros(6-ir+1,ir-1),eye(6-ir+1)];
+        alpha_l = alpha_l+hi*(b-alpha_l(ir))+Si*alpha_i;
+        flag = flag+1;
+        if flag == 7
+%             disp('failed!')
+            break;
+        end
+    end
+end
+tao = alpha_l;
+
+end
+

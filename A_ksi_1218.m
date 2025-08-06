@@ -1,0 +1,13 @@
+function A = A_ksi_1218(ksi)
+w = ksi(1:3);
+omi = Adj(Wed(ksi));
+the = norm(w);
+if the == 0
+    A = eye(6);
+else
+A = eye(6) + ...
+    (4-the*sin(the)-4*cos(the))/(2*the^2)*omi + ...
+    (4*the-5*sin(the)+the*cos(the))/(2*the^3)*omi^2 + ...
+    (2-the*sin(the)-2*cos(the))/(2*the^4)*omi^3 + ...
+    (2*the-3*sin(the)+the*cos(the))/(2*the^5)*omi^4;
+end

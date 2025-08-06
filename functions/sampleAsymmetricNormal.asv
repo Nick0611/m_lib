@@ -1,0 +1,17 @@
+
+function sample = sampleAsymmetricNormal(a, b, c, N)
+% 定义概率密度函数
+% pdf = @(x) exp(-(x - c).^2) .* (x>a) .* (x<b); % 高斯分布，仅在[a, b]区间内有效
+pdf = @(x) (x >= a & x <= c).*(x-a)/(c-a) + (x > c & x <= b).*(b-x)/(b-c);
+
+% 执行舍选法采样
+sample = rejection_sampling(pdf, a, b, N);
+
+% 定义拒绝采样的函数
+    function sample = rejection_sampling(pdf, a, b, N)
+        x = a + (b - a) * rand(N, 1); % 生成N个在[a, b]区间内的均匀随机数
+        y = pdf(x); % 计算这些点的概率密度值
+        u = rand(N, 1); % 生成N个在[0, 1]区间内的均匀随机数
+        sample = x(u <= y); % 拒绝采样
+    end
+end

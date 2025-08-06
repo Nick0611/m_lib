@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addOn>
+  <identifier>9bd515f2-f40d-4f57-8533-f86bdaf75b3e</identifier>
+  <displayType>Collection</displayType>
+  <translatedDisplayType>
+    <en_US>Collection</en_US>
+    <ja_JP>コレクション</ja_JP>
+    <ko_KR>컬렉션</ko_KR>
+    <zh_CN>集合</zh_CN>
+  </translatedDisplayType>
+  <name>Impedance Control for a 2-Link Robot Arm - User-interactive</name>
+  <author>Matthew Sheen</author>
+  <version>1.0.0.0</version>
+  <downloadUrl>https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/9bd515f2-f40d-4f57-8533-f86bdaf75b3e/0381c19f-5cf9-da81-f13b-978aba5b035e/packages/zip?src=addons_ml_desktop_install&amp;profile_id=16646918&amp;license=40697951&amp;release_family=R2019b</downloadUrl>
+  <licenseUrl>https://addons.mathworks.com/registry/v1/9bd515f2-f40d-4f57-8533-f86bdaf75b3e/1.0.0.0/-/license</licenseUrl>
+  <previewImageUrl>https://www.mathworks.com/responsive_image/160/120/0/0/0/cache/matlabcentral/mlc-downloads/downloads/submissions/57853/versions/1/screenshot.png</previewImageUrl>
+  <releaseNotesUrl>https://www.mathworks.com/add-ons/9bd515f2-f40d-4f57-8533-f86bdaf75b3e/0381c19f-5cf9-da81-f13b-978aba5b035e/releaseNotes</releaseNotesUrl>
+  <installationFolder>Collections</installationFolder>
+</addOn>

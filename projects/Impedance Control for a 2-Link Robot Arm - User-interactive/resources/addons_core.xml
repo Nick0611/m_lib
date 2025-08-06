@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addonCore>
+  <label>Impedance Control for a 2-Link Robot Arm - User-interactive</label>
+  <version>1.0.0.0</version>
+  <type>zip</type>
+  <identifier>9bd515f2-f40d-4f57-8533-f86bdaf75b3e</identifier>
+  <createdBy name="Matthew Sheen"/>
+  <image>resources/screenshot.png</image>
+</addonCore>
